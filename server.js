@@ -11,7 +11,7 @@ var options = {
   cert: fs.readFileSync('cert.pem')
 };
 
-https.createServer(options, app).listen(8001);
+https.createServer(options, app).listen(process.env.Port || 8001);
 
 
 app.use('/', express.static(__dirname + '/src'));
