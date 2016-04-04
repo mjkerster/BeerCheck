@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Beer Check</title>
+</head>
+<body>
+	<script type="text/javascript" src="/beerRest.js"></script>
+	<script type="text/javascript" src="/app.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="/styles/pure-min.css">
+	<link rel="stylesheet" type="text/css" href="/styles/beerCheck.css">
+	<div class="container">
+		<div class="titleBar">
+			<h2>Beer Check</h2>
+		</div>
+		<div id='main'>
+			<div id="beerList">
+				List of your beer
+			</div>
+		</div>
+
+		<div id="find" class="pure-g">
+			<div class="pure-u-1">
+				<form action="" class="pure-form pure-form-aligned">
+	    			<fieldset>
+						<input id="beerName" type="text" class="pure-u-2-3">
+	    				<button onclick="beerApp.searchForBeer()" class="pure-button-primary pure-button">Search</button>
+	    			</fieldset>
+	    		</form>
+	    	</div>
+	    	<div class="pure-u-1">
+	    		<ul id="findList" class="beer-list">
+	    			<li class="beer-row pure-u-1">
+	    				<div class="pure-u-1">
+		    				<div class="beer-image pure-u-1-8">
+			    				<img src="https://s3.amazonaws.com/brewerydbapi/beer/XbDAJF/upload_GYBesr-icon.png">
+			    			</div>
+			    			<div class="title-section pure-u-4-5">
+		    					<span class="title pure-u-1">Bass Ale</span>
+		    					<span>English Ale </span><span>ABV: 6.2%</span>
+		    				</div>
+			    		</div>		    				
+						<div class="beer-description pure-u-1">
+							<p>This is the delicious description of the beer. You should read this so you know what to expect from this beer! Mother fucker!</p>
+						</div>
+	    			</li>
+	    		</ul>
+	    	</div>
+		</div>
+	</div>
+</body>
+</html>

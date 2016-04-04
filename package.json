@@ -1,0 +1,16 @@
+{
+  "name": "beercheck",
+  "version": "1.0.0",
+  "description": "app to track beers you have consumed",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.13.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Matthew Kerster",
+  "license": "ISC"
+}

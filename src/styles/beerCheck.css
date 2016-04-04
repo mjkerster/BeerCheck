@@ -1,0 +1,39 @@
+.container{
+	padding:20px;
+}
+.main{
+	display: none;
+}
+.beer-list{
+	padding: 0px;
+}
+
+.title-section{
+	padding: 10px 0px;
+
+}
+
+.title{
+	font-weight: bold;	
+}
+.beer-row{
+	padding: 10px 0px;
+	border-bottom: thin solid #D3D3D3;
+	
+}
+.beer-description{
+
+}
+.beer-image{
+	/*height: 64px;
+    width: 64px;
+    display: inline-block;
+    margin-right: 10px;*/
+}
+
+.beer-body{
+	/*
+	display: inline-block;
+    float: left;
+    position: absolute;*/
+}
