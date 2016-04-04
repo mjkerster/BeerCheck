@@ -10,8 +10,8 @@ var options = {
   key: fs.readFileSync('key.pem'),
   cert: fs.readFileSync('cert.pem')
 };
-
-https.createServer(options, app).listen(process.env.Port || 8001);
+var port = process.env.PORT || 8001
+https.createServer(options, app).listen(port);
 
 
 app.use('/', express.static(__dirname + '/src'));
