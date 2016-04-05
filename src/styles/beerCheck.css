@@ -27,8 +27,11 @@
 .beer-image{
 	height: 64px;
     width: 64px;
-    display: inline-block;
     margin-right: 10px;
+}
+
+.style, .abv{
+	font-size: .8rem;
 }
 
 .beer-body{
