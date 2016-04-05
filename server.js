@@ -6,13 +6,13 @@ var https = require('https');
 var fs = require('fs');
 //var request = require('request');
 
-var options = {
-  key: fs.readFileSync('key.pem'),
-  cert: fs.readFileSync('cert.pem')
-};
+// var options = {
+//   key: fs.readFileSync('key.pem'),
+//   cert: fs.readFileSync('cert.pem')
+// };
 
-https.createServer(options, app).listen(process.env.PORT || 8001);
-
+// https.createServer(options, app).listen(process.env.PORT || 8001);
+http.createServer(app).listen(process.env.PORT || 8001);
 
 app.use('/', express.static(__dirname + '/src'));
 app.get('/', function(req, res) {
