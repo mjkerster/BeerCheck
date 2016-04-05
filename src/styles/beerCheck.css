@@ -1,7 +1,7 @@
 .container{
 	padding:20px;
 }
-.main{
+#main{
 	display: none;
 }
 .beer-list{
@@ -25,10 +25,10 @@
 
 }
 .beer-image{
-	/*height: 64px;
+	height: 64px;
     width: 64px;
     display: inline-block;
-    margin-right: 10px;*/
+    margin-right: 10px;
 }
 
 .beer-body{
