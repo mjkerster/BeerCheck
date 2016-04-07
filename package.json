@@ -4,6 +4,7 @@
   "description": "app to track beers you have consumed",
   "main": "app.js",
   "dependencies": {
+    "body-parser": "^1.15.0",
     "express": "^4.13.4"
   },
   "devDependencies": {},

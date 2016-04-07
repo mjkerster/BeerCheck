@@ -4,7 +4,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Beer Check</title>
 </head>
-<body>
+<body onload="beerApp.loadMyBeer()">
 	<script type="text/javascript" src="/beerRest.js"></script>
 	<script type="text/javascript" src="/app.js"></script>
 
@@ -14,13 +14,18 @@
 		<div class="titleBar">
 			<h2>Beer Check</h2>
 		</div>
-		<div id='main'>
-			<div id="beerList">
-				List of your beer
+		<div id="main" class="pure-g">
+			<div class="pure-u-1">
+				<button onclick="beerApp.changeState('find')" class="pure-button-primary pure-button pure-u-1">Find Beer</button>
+			</div>
+			<div class="pure-u-1">
+				<ul id="myBeerList" class="beer-list">
+
+				</ul>
 			</div>
 		</div>
 
-		<div id="find" class="pure-g">
+		<div id="find" class="pure-g inactive">
 			<div class="pure-u-1">
 				<form action="" class="pure-form pure-form-aligned">
 	    			<fieldset>
@@ -31,7 +36,7 @@
 	    	</div>
 	    	<div class="pure-u-1">
 	    		<ul id="findList" class="beer-list">
-	    			<li class="beer-row pure-u-1">
+	    			<!-- <li class="beer-row pure-u-1">
 	    				<div class="pure-u-1">
 		    				<div class="beer-image pure-u-1-8">
 			    				<img src="https://s3.amazonaws.com/brewerydbapi/beer/XbDAJF/upload_GYBesr-icon.png">
@@ -45,7 +50,7 @@
 						<div class="beer-description pure-u-1">
 							This is the delicious description of the beer. You should read this so you know what to expect from this beer! Mother fucker!
 						</div>
-	    			</li>
+	    			</li> -->
 	    		</ul>
 	    	</div>
 		</div>

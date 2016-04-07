@@ -1,11 +1,19 @@
 .container{
-	padding:20px;
+	padding: 5px 20px;
 }
-#main{
+
+.inactive{
 	display: none;
+}
+
+h2{
+	margin: 10px 0px;
 }
 .beer-list{
 	padding: 0px;
+	margin: 0px;
+	height: 80vh;
+    overflow: scroll;
 }
 
 .title-section{
@@ -21,6 +29,10 @@
 	border-bottom: thin solid #D3D3D3;
 	
 }
+.beer-row:first-child{
+	padding-top: 0px;
+}
+
 .beer-description{
 
 }

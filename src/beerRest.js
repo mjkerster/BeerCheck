@@ -5,7 +5,8 @@ var beerRest = function(){
 
 	var restFuncs = {
 		getBeer: getBeer,
-		httpPost: httpPost
+		getMyBeer: getMyBeer,
+		postBeer: postBeer
 	};
 
 	return restFuncs;
@@ -27,7 +28,30 @@ var beerRest = function(){
 		httpClient.send();
 	}
 
-	function httpPost(url, obj){
+	function getMyBeer(success, fail){
+		var url = 'mybeer';
 
+		_httpGetWrapper(url, success, fail);
+	}
+
+	function postBeer(obj){
+		httpClient.open("POST", "beer/add");
+		httpClient.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+		httpClient.send(JSON.stringify(obj));
+	}
+
+	function _httpGetWrapper(url, success, fail){
+		httpClient.onreadystatechange = function(){
+			if(httpClient.readyState === 4){
+				if(httpClient.status === 200){
+					success(httpClient.response);
+				}
+				else{
+					fail(httpClient.status);	
+				}
+			}
+		}
+		httpClient.open('GET', url, true);
+		httpClient.send();
 	}
 }();
