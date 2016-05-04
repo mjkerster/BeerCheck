@@ -108,3 +108,31 @@ var domHelper = function(){
 	}
 
 }();
+
+var initializeServiceWorker = function(){
+
+
+if ('serviceWorker' in navigator) {
+	//ERROR 1: 404 when trying to pull file with path '/BeerCheck/src/<filename>'. I serve the files up differently with Node.js 
+	//			It is set to serve everything at /
+	//ERROR 2:  "Failed to register a ServiceWorker: An SSL certificate error occurred when fetching the script." If you are working locally
+	//			you don't need to use HTTPS. Unless you have TLS certificate ready to go save yourself the time and just run it over HTTP.
+	//ERROR 3:  You may notice a net::ERR_FILE_EXISTS error on the network tab of your Chrome console when loading your service work JS file
+	//			This can be ignored, but if it bothers you, you can update your browser to 50 or higher
+	//ERROR 4:  Max scope is at the root of the service worker JS file. Make sure all assests you want are at the root level or higher. *My 
+	//			Index.html wasn't being cached cause the SW JS was in the src folder.
+  navigator.serviceWorker.register('/serviceWorker.js', { scope: '/' }).then(function(reg) {
+    if(reg.installing) {
+      console.log('Service worker installing');
+    } else if(reg.waiting) {
+      console.log('Service worker installed');
+    } else if(reg.active) {
+      console.log('Service worker active');
+    }
+    
+  }).catch(function(error) {
+    // registration failed
+    console.log('Registration failed with ' + error);
+  });
+};
+}();

@@ -6,20 +6,15 @@ var bodyParser = require('body-parser');
 var fs = require('fs');
 
 var app = express();
-var dbConstantObj = {
-	apiKey : '62Hbco6a2MTpXS68g9F-Jh8uAVR2XF-M',
-	apiRoot : 'https://api.mongolab.com/api/1/databases/kerster_db/'
+var options = {
+  key: fs.readFileSync('key.pem'),
+  cert: fs.readFileSync('cert.pem')
 };
 
-// var options = {
-//   key: fs.readFileSync('key.pem'),
-//   cert: fs.readFileSync('cert.pem')
-// };
-
-// https.createServer(options, app).listen(process.env.PORT || 8001);
+//https.createServer(options, app).listen(process.env.PORT || 8001);
 http.createServer(app).listen(process.env.PORT || 8001);
-
-app.use('/', express.static(__dirname + '/src'));
+console.log(__dirname);
+app.use('/', express.static(__dirname));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
