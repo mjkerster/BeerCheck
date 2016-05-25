@@ -14,18 +14,7 @@ var beerRest = function(){
 	function getBeer(name, success, fail){
 		var url = 'beer/'+name;
 
-		httpClient.onreadystatechange = function(){
-			if(httpClient.readyState === 4){
-				if(httpClient.status === 200){
-					success(httpClient.response);
-				}
-				else{
-					fail(httpClient.status);	
-				}
-			}
-		}
-		httpClient.open('GET', url, true);
-		httpClient.send();
+		_httpGetWrapper(url, success, fail);
 	}
 
 	function getMyBeer(success, fail){
@@ -41,6 +30,7 @@ var beerRest = function(){
 	}
 
 	function _httpGetWrapper(url, success, fail){
+		
 		httpClient.onreadystatechange = function(){
 			if(httpClient.readyState === 4){
 				if(httpClient.status === 200){
