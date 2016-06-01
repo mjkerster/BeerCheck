@@ -13,15 +13,12 @@ var beerApp = function(){
 	var searchedBeerList = {};
 	var myBeerList = {};
 
-	
-
 	function loadMyBeer(){
 		var el = document.getElementById('myBeerList');
 
 		beerRest.getMyBeer(
 			function success(response){
-				var myObj = JSON.parse(response);
-			 	myBeerList = myObj;
+			 	myBeerList = response;
 			 	domHelper.createList(el, myBeerList);
 			},
 			function fail(response){
@@ -44,8 +41,7 @@ var beerApp = function(){
 		domHelper.clearElementContents(el);
 		beerRest.getBeer(beer, 
 			function success(response){ 
-			 	var myObj = JSON.parse(response);
-			 	searchedBeerList = myObj.data;
+			 	searchedBeerList = response.data;
 			 	domHelper.createList(el, searchedBeerList);
 			},
 			function fail(response){
@@ -134,5 +130,5 @@ if ('serviceWorker' in navigator) {
     // registration failed
     console.log('Registration failed with ' + error);
   });
-};
+}
 }();

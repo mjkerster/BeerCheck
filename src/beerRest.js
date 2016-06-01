@@ -12,13 +12,13 @@ var beerRest = function(){
 	return restFuncs;
 
 	function getBeer(name, success, fail){
-		var url = 'beer/'+name;
+		var url = '/beer/'+name;
 
 		_httpGetWrapper(url, success, fail);
 	}
 
 	function getMyBeer(success, fail){
-		var url = 'mybeer';
+		var url = '/mybeer';
 
 		_httpGetWrapper(url, success, fail);
 	}
@@ -30,11 +30,24 @@ var beerRest = function(){
 	}
 
 	function _httpGetWrapper(url, success, fail){
-		
+		var updateDom = true;
+		if(url === '/mybeer'){
+			caches.match(url).then(function(response){
+				if(response){
+					updateDom = false;
+					return response.json();
+				}
+			}).then(function(data){
+				console.log('#### Cache Success');
+				success(data);
+			});
+		}
 		httpClient.onreadystatechange = function(){
 			if(httpClient.readyState === 4){
 				if(httpClient.status === 200){
-					success(httpClient.response);
+					console.log('#### Onready Success');
+					if(updateDom)
+						success(JSON.parse(httpClient.response));
 				}
 				else{
 					fail(httpClient.status);	
