@@ -30,23 +30,9 @@ var beerRest = function(){
 	}
 
 	function _httpGetWrapper(url, success, fail){
-		var updateDom = true;
-		if(url === '/mybeer'){
-			caches.match(url).then(function(response){
-				if(response){
-					updateDom = false;
-					return response.json();
-				}
-			}).then(function(data){
-				console.log('#### Cache Success');
-				success(data);
-			});
-		}
 		httpClient.onreadystatechange = function(){
 			if(httpClient.readyState === 4){
 				if(httpClient.status === 200){
-					console.log('#### Onready Success');
-					if(updateDom)
 						success(JSON.parse(httpClient.response));
 				}
 				else{

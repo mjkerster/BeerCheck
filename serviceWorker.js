@@ -1,6 +1,6 @@
 this.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open('beerCheckCacheV2').then(function(cache) {
+    caches.open('beerCheckCacheV3').then(function(cache) {
       return cache.addAll([
         '/',  //ERROR 5 if this line isn't here than NON of the files will be able to be fetched.  I don't know why though...
         '/index.html',
@@ -15,17 +15,18 @@ this.addEventListener('install', function(event) {
 });
 
 this.addEventListener('fetch', function(event) {
-  var urlToMatch = event.request.url.substring(event.request.url.length - 6);
-  if(urlToMatch === 'mybeer'){
+  console.log('METHOD: '+ event.request.method +' and URL: '+ event.request.url);
+
+  if(event.request.method === 'POST'){
     event.respondWith(
       fetch(event.request).then(function(response){
-        caches.open('beerCheckCacheV1').then(function(cache){
-          cache.put(event.request, response);
+        fetch('/mybeer').then(function(resp){
+          caches.open('beerCheckCacheV3').then(function(cache){
+            cache.put('/mybeer', resp);
+          });
         });
-        return response.clone();
-      },
-      function(error){
-        return error;
+
+        return response;
       })
     );
   }
