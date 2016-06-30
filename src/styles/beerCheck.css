@@ -10,14 +10,13 @@ h2{
 	margin: 10px 0px;
 }
 .beer-list{
-	padding: 0px;
-	margin: 0px;
+	padding: 10px;
 	height: 80vh;
     overflow: scroll;
 }
 
-.title-section{
-	padding: 10px 0px;
+.title-section, .beer-description{
+	padding: 10px;
 
 }
 
@@ -25,16 +24,14 @@ h2{
 	font-weight: bold;	
 }
 .beer-row{
-	padding: 10px 0px;
-	border-bottom: thin solid #D3D3D3;
-	
+	margin-bottom: 30px;
+    box-shadow: 1px 1px 10px 2px lightgrey;
 }
-.beer-row:first-child{
-	padding-top: 0px;
+img{
+	height: 200px;
 }
-
 .beer-description{
-
+	display: none;
 }
 .beer-image{
 	height: 64px;
@@ -42,8 +39,12 @@ h2{
     margin-right: 10px;
 }
 
-.style, .abv{
+.style, .abv, .toggle{
 	font-size: .8rem;
+}
+
+.toggle{
+	color: rgb(61, 146, 201);
 }
 
 .beer-body{

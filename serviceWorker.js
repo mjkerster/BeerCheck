@@ -21,7 +21,7 @@ this.addEventListener('fetch', function(event) {
     event.respondWith(
       fetch(event.request).then(function(response){
         fetch('/mybeer').then(function(resp){
-          caches.open('beerCheckCacheV3').then(function(cache){
+          caches.open('beerCheckCacheV4').then(function(cache){
             cache.put('/mybeer', resp);
           });
         });
