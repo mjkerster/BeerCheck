@@ -1,13 +1,24 @@
 .container{
 	padding: 5px 20px;
+	background-color: #F0F4F5;
 }
 
 .inactive{
 	display: none;
 }
 
-h2{
+h1{
 	margin: 10px 0px;
+	padding: 0px 10px;
+}
+.search{
+	height: 40px;
+	float: right;
+}
+.home{
+	height: 40px;
+	float: right;
+	display: none;
 }
 .beer-list{
 	padding: 10px;
@@ -22,14 +33,21 @@ h2{
 
 .title{
 	font-weight: bold;	
+	font-size: 20px;
 }
 .beer-row{
 	margin-bottom: 30px;
-    box-shadow: 1px 1px 10px 2px lightgrey;
+    box-shadow: 1px 1px 10px 2px grey;
+    background-color: white;
 }
-img{
-	height: 200px;
+.button-secondary{
+	border-radius: 0px;
+	width: 100%;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+	color: white;
+	background-color: #0078e7;
 }
+
 .beer-description{
 	display: none;
 }
@@ -37,19 +55,4 @@ img{
 	height: 64px;
     width: 64px;
     margin-right: 10px;
-}
-
-.style, .abv, .toggle{
-	font-size: .8rem;
-}
-
-.toggle{
-	color: rgb(61, 146, 201);
-}
-
-.beer-body{
-	/*
-	display: inline-block;
-    float: left;
-    position: absolute;*/
 }

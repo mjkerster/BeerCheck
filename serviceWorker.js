@@ -8,6 +8,9 @@ this.addEventListener('install', function(event) {
         '/src/beerRest.js',
         '/src/styles/beerCheck.css',
         '/src/styles/pure-min.css',
+        '/src/styles/home.svg',
+        '/src/styles/magnifier.svg',
+        '/src/styles/beer.svg',
         '/mybeer' //Positive because I use NODE.JS I can easily cache my data request
       ]);
     })
@@ -21,7 +24,7 @@ this.addEventListener('fetch', function(event) {
     event.respondWith(
       fetch(event.request).then(function(response){
         fetch('/mybeer').then(function(resp){
-          caches.open('beerCheckCacheV4').then(function(cache){
+          caches.open('beerCheckCacheV5').then(function(cache){
             cache.put('/mybeer', resp);
           });
         });

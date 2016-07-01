@@ -12,26 +12,11 @@
 	<link rel="stylesheet" type="text/css" href="/src/styles/beerCheck.css">
 	<div class="container">
 		<div class="titleBar">
-			<h2>Beer Check</h2>
+			<h1>Beer Check <img id="search" class="search" style="display:inline-block"; onclick="beerApp.changeState('find')" src="/src/styles/magnifier.svg" /><img id="home" class="home" onclick="beerApp.changeState('main')" src="/src/styles/home.svg" /></h1>
 		</div>
 		<div id="main" class="pure-g">
 			<div class="pure-u-1">
-				<button onclick="beerApp.changeState('find')" class="pure-button-primary pure-button pure-u-1">Find Beer</button>
-			</div>
-			<div class="pure-u-1">
 				<ul id="myBeerList" class="beer-list">
-					<!-- <li class="beer-row pure-u-1">
-						<img src="'+imageSrc+'">
-						<div class="title-section pure-u-1">
-							<span class="title pure-u-1">'+listData[i].nameDisplay+'</span>
-							<span class="pure-u-1 style">'+listData[i].style.name+' </span>
-							<span class="pure-u-1 abv">ABV: '+listData[i].abv+'%</span>
-							<span onclick="beerApp.toggleDesc('+i+', this)" class="pure-u-1 toggle">Show Description</span>
-						</div>
-						<div id="beerDesc'+i+'" class="beer-description pure-u-1">
-							<p>'+listData[i].description+'</p>
-						</div>
-					</li> -->
 				</ul>
 			</div>
 		</div>
@@ -47,21 +32,6 @@
 	    	</div>
 	    	<div class="pure-u-1">
 	    		<ul id="findList" class="beer-list">
-	    			<!-- <li class="beer-row pure-u-1">
-	    				<div class="pure-u-1">
-		    				<div class="beer-image pure-u-1-8">
-			    				<img src="https://s3.amazonaws.com/brewerydbapi/beer/XbDAJF/upload_GYBesr-icon.png">
-			    			</div>
-			    			<div class="title-section pure-u-5-8">
-		    					<span class="title pure-u-1">Bass Ale</span>
-		    					<span class="pure-u-1 style">English Ale </span>
-		    					<span class="pure-u-1 abv">ABV: 6.2%</span>
-		    				</div>
-			    		</div>		    				
-						<div class="beer-description pure-u-1">
-							This is the delicious description of the beer. You should read this so you know what to expect from this beer! Mother fucker!
-						</div>
-	    			</li> -->
 	    		</ul>
 	    	</div>
 		</div>

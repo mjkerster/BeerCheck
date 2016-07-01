@@ -58,10 +58,10 @@ var beerApp = function(){
 
 	function toggleDesc(index, clickedEl){
 		var el = document.getElementById('beerDesc'+index);
-		if(clickedEl.innerHTML === 'Show Description')
-			clickedEl.innerHTML = 'Hide Description';
+		if(clickedEl.innerHTML === '+ Show Description')
+			clickedEl.innerHTML = '- Hide Description';
 		else
-			clickedEl.innerHTML = 'Show Description';
+			clickedEl.innerHTML = '+ Show Description';
 		domHelper.toggleElement(el);
 	}
 	
@@ -84,14 +84,14 @@ var domHelper = function(){
 		var imageSrc;
 
 		for(var i = 0; i < listData.length; i++){
-			imageSrc = '';
-			if(listData[i].hasOwnProperty('labels') && listData[i].labels.hasOwnProperty('icon')){
+			imageSrc = '/src/styles/beer.svg';
+			if(listData[i].hasOwnProperty('labels') && listData[i].labels.hasOwnProperty('medium')){
 				imageSrc = listData[i].labels.medium;
 			}
 
 			if(templateName === 'mainTemplate')
 				//template = '<li class="beer-row pure-u-1"><div class="pure-u-1"><div class="beer-image pure-u-1-8"><img src="'+imageSrc+'"></div><div class="title-section pure-u-5-8"><span class="title pure-u-1">'+listData[i].nameDisplay+'</span><span class="pure-u-1 style">'+listData[i].style.name+' </span><span class="pure-u-1 abv">ABV: '+listData[i].abv+'%</span><span onclick="beerApp.toggleDesc('+i+', this)" class="pure-u-1 toggle">Show Description</span></div></div><div id="beerDesc'+i+'" class="beer-description pure-u-1"><p>'+listData[i].description+'</p></div></li>'
-				template = '<li class="beer-row"><img class="pure-u-1" src="'+imageSrc+'"><div class="title-section"><span class="title pure-u-1">'+listData[i].nameDisplay+'</span><span class="pure-u-1 style">'+listData[i].style.name+' </span><span class="pure-u-1 abv">ABV: '+listData[i].abv+'%</span><span onclick="beerApp.toggleDesc('+i+', this)" class="pure-u-1 toggle">Show Description</span></div><div id="beerDesc'+i+'" class="beer-description"><p>'+listData[i].description+'</p></div></li>'
+				template = '<li class="beer-row"><img class="pure-u-1" src="'+imageSrc+'"><div class="title-section"><span class="title pure-u-1">'+listData[i].nameDisplay+'</span><span class="pure-u-1">'+listData[i].style.name+' </span><span class="pure-u-1">ABV: '+listData[i].abv+'%</span></div><div id="beerDesc'+i+'" class="beer-description"><p>'+listData[i].description+'</p></div><button onclick="beerApp.toggleDesc('+i+', this)" class="button-secondary pure-button">+ Show Description</button></li>'
 			else if(templateName === 'findTemplate')
 				template = '<li class="beer-row pure-u-1" onclick="beerApp.addBeer('+i+')"><div class="pure-u-1"><div class="beer-image pure-u-1-8"><img src="'+imageSrc+'"></div><div class="title-section pure-u-5-8"><span class="title pure-u-1">'+listData[i].nameDisplay+'</span><span class="pure-u-1 style">'+listData[i].style.name+' </span><span class="pure-u-1 abv">ABV: '+listData[i].abv+'%</span></div></div><div class="beer-description pure-u-1"><p>'+listData[i].description+'</p></div></li>'
 			
@@ -106,6 +106,11 @@ var domHelper = function(){
 	function pageState(state){
 		var mainEl = document.getElementById('main');
 		var findEl = document.getElementById('find');
+		var searchEl = document.getElementById('search');
+		var backEl = document.getElementById('home');
+
+		toggleElement(searchEl);
+		toggleElement(backEl);
 		if(state === 'main'){
 			mainEl.removeAttribute('class', 'inactive');
 			findEl.setAttribute('class', 'inactive');
