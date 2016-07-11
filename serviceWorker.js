@@ -1,6 +1,6 @@
 this.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open('beerCheckCacheV3').then(function(cache) {
+    caches.open('beerCheckCacheV6').then(function(cache) {
       return cache.addAll([
         '/',  //ERROR 5 if this line isn't here than NON of the files will be able to be fetched.  I don't know why though...
         '/index.html',
@@ -24,7 +24,7 @@ this.addEventListener('fetch', function(event) {
     event.respondWith(
       fetch(event.request).then(function(response){
         fetch('/mybeer').then(function(resp){
-          caches.open('beerCheckCacheV5').then(function(cache){
+          caches.open('beerCheckCacheV6').then(function(cache){
             cache.put('/mybeer', resp);
           });
         });

@@ -40,12 +40,19 @@ h1{
     box-shadow: 1px 1px 10px 2px grey;
     background-color: white;
 }
-.button-secondary{
+.button-secondary, .button-success{
 	border-radius: 0px;
 	width: 100%;
 	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 	color: white;
+}
+
+.button-secondary{
 	background-color: #0078e7;
+}
+
+.button-success{
+	background-color: rgb(28, 184, 65);
 }
 
 .beer-description{

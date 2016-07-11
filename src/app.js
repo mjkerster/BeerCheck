@@ -1,6 +1,10 @@
 var beerApp = function(){
 	'use strict';
 
+	var searchedBeerList = {};
+	var myBeerList = {};
+	var pageState = 'main';
+
 	var beerTools = {
 		loadMyBeer: loadMyBeer,
 		searchForBeer : searchForBeer,
@@ -10,9 +14,6 @@ var beerApp = function(){
 	};
 
 	return beerTools;
-
-	var searchedBeerList = {};
-	var myBeerList = {};
 
 	function loadMyBeer(){
 		var el = document.getElementById('myBeerList');
@@ -30,6 +31,7 @@ var beerApp = function(){
 
 	function changeState(state){
 		domHelper.pageState(state);
+		pageState = state;
 	}
 
 	function searchForBeer(){
@@ -57,7 +59,14 @@ var beerApp = function(){
 	}
 
 	function toggleDesc(index, clickedEl){
-		var el = document.getElementById('beerDesc'+index);
+		var el; 
+		if(pageState === 'main'){
+			el = document.getElementById('beerDesc'+index);
+		}
+		else {
+			el = document.getElementById('findBeerDesc'+index);
+		}
+
 		if(clickedEl.innerHTML === '+ Show Description')
 			clickedEl.innerHTML = '- Hide Description';
 		else
@@ -90,10 +99,9 @@ var domHelper = function(){
 			}
 
 			if(templateName === 'mainTemplate')
-				//template = '<li class="beer-row pure-u-1"><div class="pure-u-1"><div class="beer-image pure-u-1-8"><img src="'+imageSrc+'"></div><div class="title-section pure-u-5-8"><span class="title pure-u-1">'+listData[i].nameDisplay+'</span><span class="pure-u-1 style">'+listData[i].style.name+' </span><span class="pure-u-1 abv">ABV: '+listData[i].abv+'%</span><span onclick="beerApp.toggleDesc('+i+', this)" class="pure-u-1 toggle">Show Description</span></div></div><div id="beerDesc'+i+'" class="beer-description pure-u-1"><p>'+listData[i].description+'</p></div></li>'
 				template = '<li class="beer-row"><img class="pure-u-1" src="'+imageSrc+'"><div class="title-section"><span class="title pure-u-1">'+listData[i].nameDisplay+'</span><span class="pure-u-1">'+listData[i].style.name+' </span><span class="pure-u-1">ABV: '+listData[i].abv+'%</span></div><div id="beerDesc'+i+'" class="beer-description"><p>'+listData[i].description+'</p></div><button onclick="beerApp.toggleDesc('+i+', this)" class="button-secondary pure-button">+ Show Description</button></li>'
 			else if(templateName === 'findTemplate')
-				template = '<li class="beer-row pure-u-1" onclick="beerApp.addBeer('+i+')"><div class="pure-u-1"><div class="beer-image pure-u-1-8"><img src="'+imageSrc+'"></div><div class="title-section pure-u-5-8"><span class="title pure-u-1">'+listData[i].nameDisplay+'</span><span class="pure-u-1 style">'+listData[i].style.name+' </span><span class="pure-u-1 abv">ABV: '+listData[i].abv+'%</span></div></div><div class="beer-description pure-u-1"><p>'+listData[i].description+'</p></div></li>'
+				template = '<li class="beer-row"><img class="pure-u-1" src="'+imageSrc+'"><div class="title-section"><span class="title pure-u-1">'+listData[i].nameDisplay+'</span><span class="pure-u-1">'+listData[i].style.name+' </span><span class="pure-u-1">ABV: '+listData[i].abv+'%</span></div><button onclick="beerApp.addBeer('+i+')" class="button-success pure-button">+ Add Beer</button><div id="findBeerDesc'+i+'" class="beer-description"><p>'+listData[i].description+'</p></div><button onclick="beerApp.toggleDesc('+i+', this)" class="button-secondary pure-button">+ Show Description</button></li>'
 			
 			el.insertAdjacentHTML('beforeend', template);
 		}
